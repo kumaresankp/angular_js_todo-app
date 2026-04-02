@@ -1,0 +1,15 @@
+<form (ngSubmit)="onSubmit()" class="todo-form">
+  <div class="input-group">
+    <input
+      type="text"
+      [(ngModel)]="newTodoTitle"
+      name="todoTitle"
+      placeholder="✍️ What needs to be done?"
+      class="todo-input"
+      autofocus
+    />
+    <button type="submit" class="add-btn" [disabled]="!newTodoTitle.trim()">
+      ➕ Add
+    </button>
+  </div>
+</form>

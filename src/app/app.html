@@ -1,0 +1,14 @@
+﻿<div class="todo-app">
+  <h1>{{title}}</h1>
+  <app-todo-form (addTodo)="addTodo($event)"></app-todo-form>
+  <app-todo-list
+    [todos]="todos"
+    (toggle)="toggleTodo($event)"
+    (delete)="deleteTodo($event)"
+    (edit)="editTodo($event)">
+  </app-todo-list>
+  <div class="stats">
+    <p>Total: {{stats.total}}, Completed: {{stats.completed}}, Pending: {{stats.pending}}</p>
+    <button (click)="clearCompleted()">Clear Completed</button>
+  </div>
+</div>

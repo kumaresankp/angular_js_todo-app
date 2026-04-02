@@ -1,0 +1,38 @@
+<div class="todo-item" [class.completed]="todo.completed">
+
+  <!-- View Mode -->
+  <div class="todo-view" *ngIf="!isEditing">
+    <label class="checkbox-container">
+      <input
+        type="checkbox"
+        [checked]="todo.completed"
+        (change)="onToggle()"
+      />
+      <span class="checkmark"></span>
+    </label>
+
+    <div class="todo-content" (dblclick)="startEdit()">
+      <span class="todo-title">{{ todo.title }}</span>
+      <span class="todo-date">{{ todo.createdAt | date: 'short' }}</span>
+    </div>
+
+    <div class="todo-actions">
+      <button class="btn-edit" (click)="startEdit()" title="Edit">✏️</button>
+      <button class="btn-delete" (click)="onDelete()" title="Delete">🗑️</button>
+    </div>
+  </div>
+
+  <!-- Edit Mode -->
+  <div class="todo-edit" *ngIf="isEditing">
+    <input
+      type="text"
+      [(ngModel)]="editTitle"
+      (keyup.enter)="saveEdit()"
+      (keyup.escape)="cancelEdit()"
+      class="edit-input"
+      autofocus
+    />
+    <button class="btn-save" (click)="saveEdit()">💾</button>
+    <button class="btn-cancel" (click)="cancelEdit()">❌</button>
+  </div>
+</div>
